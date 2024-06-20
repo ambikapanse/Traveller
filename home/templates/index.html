@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% block start %}
+    <!-- Tab panes -->
+    <div class="container-fluid custom-padding">
+        <div class="row justify-content-center">
+
+            <!-- First column -->
+            <div class="col-md-3">
+                <div class="tab-content">
+                    <div id="tab1" class="container-fluid tab-pane active">
+                        <div class="card custom-card">
+                            <div class="row post-header col-12 py-2 px-3">
+                                <div class="col-6 float-left">
+                                    <h4>Daily Stats</h4>
+                                </div>
+                            </div>
+                            <img class="card-img custom-img" src="https://via.placeholder.com/300x300" alt="Time Spent">
+                            <div class="card-body px-3">
+                                <h5 class="card-title">Time Spent</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- What's New -->
+                    <div class="container-fluid tab-pane active mt-3">
+                        <div class="card custom-card">
+                            <div class="row post-header col-12 py-2 px-3">
+                                <div class="col-6 float-left">
+                                    <h4>What's New</h4>
+                                </div>
+                            </div>
+                            <img class="card-img custom-img" src="https://via.placeholder.com/300x300" alt="New Article">
+                            <div class="card-body px-3">
+                                <h5 class="card-title">Article</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Second column -->
+            <div class="col-md-6">
+                <div class="tab-content">
+                    <div id="tab2" class="container-fluid tab-pane active">
+                        <div class="card custom-card">
+                            <div class="row post-header col-12 py-2 px-3">
+                                <div class="col-6 float-left">
+                                    <h4>Mumbai</h4>
+                                </div>
+                            </div>
+                            <img class="card-img custom-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Marine_Drive_Skyline.jpg/1200px-Marine_Drive_Skyline.jpg" alt="Marine Drive, Mumbai">
+                            <div class="card-body px-3">
+                                <h5 class="card-title">1000 Likes</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            </div>
+                            <div class="row post-footer px-3 pb-3">
+                                <div class="col-1 float-left text-left">
+                                    <i class="far fa-heart"></i>
+                                </div>
+                                <div class="col-1 float-right text-right">
+                                    <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Third column -->
+            <div class="col-md-3">
+                <div class="tab-content">
+                    <div id="tab3" class="container-fluid tab-pane active">
+                        <div class="card custom-card">
+                            <div class="row post-header col-12 py-2 px-3">
+                                <div class="col-6 float-left">
+                                    <h4>Livestreams</h4>
+                                </div>
+                            </div>
+                            <img class="card-img custom-round-img" src="https://via.placeholder.com/300x300" alt="Livestreams">
+                            <div class="card-body px-3">
+                                Idk what to do here.
+                            </div>
+                            <div class="row post-footer px-3 pb-3">
+                                <div class="col-1 float-left text-left">
+                                    <i class="far fa-heart"></i>
+                                </div>
+                                <div class="col-1 float-right text-right">
+                                    <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
