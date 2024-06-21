@@ -1,6 +1,8 @@
 /*NAVBAR*/
 .navbar-nav {
     align-items: center;
+    margin-bottom: 10px;
+    padding-bottom: 100px;
 }
 
 .input-group {
@@ -41,17 +43,6 @@
             margin: auto;
         }
 
-        .custom-round-img{
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Ensures the image covers the entire area */
-            border-radius: 50%; /* Make the image round */
-            cursor: pointer; /* Change cursor to pointer on hover */
-            transition: transform 0.3s ease-in-out;
-        }
-        .custom-round-img:hover {
-            transform: scale(1.1); /* Scale up image on hover */
-        }
         .custom-img {
             width: 50%;
             height: 50%;

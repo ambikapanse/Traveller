@@ -19,16 +19,17 @@ from django.urls import path
 from home.views import *
 from livestreams.views import *
 from maps.views import *
-from messages.views import *
+from chats.views import *
 from notifications.views import *
 from dashboard.views import *
 from search.views import *
 
 urlpatterns = [
+    path('',home,name="home"),
     path('home/',home,name="home"),
     path('livestreams/',livestreams,name="livestreams"),
     path('maps/',maps,name="maps"),
-    path('messages/',messages,name="messages"),
+    path('chats/',messages,name="chats"),
     path('notifications/',notifications,name="notifications"),
     path('dashboard/',dashboard,name="dashboard"),
     path('search/',search,name="search"),
