@@ -1,53 +1,54 @@
 {% extends 'base.html' %}
 {% block start %}
     <!-- Tab panes -->
-    <div class="container-fluid custom-padding">
-        <div class="row justify-content-center">
-
-            <!-- First column -->
-            <div class="col-md-3">
-                <div class="tab-content">
-                    <div id="tab1" class="container-fluid tab-pane active">
-                        <div class="card custom-card">
-                            <div class="row post-header col-12 py-2 px-3">
-                                <div class="col-6 float-left">
-                                    <h4>Daily Stats</h4>
+    <div class="container mt-4">
+        <div class="container-fluid custom-padding">
+            <div class="row justify-content-center">
+                <!-- First column -->
+                <div class="col-md-3">
+                    <div class="tab-content">
+                        <div id="tab1" class="container-fluid tab-pane active">
+                            <div class="card custom-card">
+                                <div class="row post-header col-12 py-2 px-3">
+                                    <div class="col-6 float-left">
+                                        <h4>Daily Stats</h4>
+                                    </div>
                                 </div>
-                            </div>
-                            <img class="card-img custom-img" src="https://via.placeholder.com/300x300" alt="Time Spent">
-                            <div class="card-body px-3">
-                                <h5 class="card-title">Time Spent</h5>
+                                <img class="card-img custom-img" src="https://via.placeholder.com/300x300"
+                                     alt="Time Spent">
+                                <div class="card-body px-3">
+                                    <h5 class="card-title">Time Spent</h5>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- What's New -->
-                    <div class="container-fluid tab-pane active mt-3">
-                        <div class="card custom-card">
-                            <div class="row post-header col-12 py-2 px-3">
-                                <div class="col-6 float-left">
-                                    <h4>What's New</h4>
+                        <!-- What's New -->
+                        <div class="container-fluid tab-pane active mt-3">
+                            <div class="card custom-card">
+                                <div class="row post-header col-12 py-2 px-3">
+                                    <div class="col-6 float-left">
+                                        <h4>What's New</h4>
+                                    </div>
                                 </div>
-                            </div>
-                            <img class="card-img custom-img" src="https://via.placeholder.com/300x300"
-                                 alt="New Article">
-                            <div class="card-body px-3">
-                                <h5 class="card-title">Article</h5>
+                                <img class="card-img custom-img" src="https://via.placeholder.com/300x300"
+                                     alt="New Article">
+                                <div class="card-body px-3">
+                                    <h5 class="card-title">Article</h5>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
 
-            <!-- Second column -->
-            <div class="col-md-6">
-                <div class="tab-content">
-                    <div id="tab2" class="container-fluid tab-pane active">
-{#                        {% for post in post_items %}#}
+                <!-- Second column -->
+                <div class="col-md-6">
+                    <div class="tab-content">
+                        <div id="tab2" class="container-fluid tab-pane active">
+                            {#                        {% for post in post_items %}#}
                             <div class="card custom-card">
                                 <div class="row post-header col-12 py-2 px-3">
                                     <div class="col-6 float-left">
-{#                                        <h4>{{post.location}}</h4>#}
+                                        {#                                        <h4>{{post.location}}</h4>#}
                                         <h4>Mumbai</h4>
                                     </div>
                                 </div>
@@ -57,7 +58,7 @@
                                 <div class="card-body px-3">
                                     <h5 class="card-title">1000 Likes</h5>
                                     <p class="card-text">Random sample text for the caption.</p>
-{#                                    <p class="card-text">{{post.caption}}</p>#}
+                                    {#                                    <p class="card-text">{{post.caption}}</p>#}
                                 </div>
                                 <div class="row post-footer px-3 pb-3">
                                     <div class="col-1 float-left text-left">
@@ -68,42 +69,42 @@
                                     </div>
                                 </div>
                             </div>
-{#                        {% endfor %}#}
-                    </div>
-                </div>
-            </div>
-
-            <!-- Third column -->
-            <div class="col-md-3">
-                <div class="card">
-                    <div class="card-row post-header col-12 py-2 px-3Ō">
-                        Users
-                    </div>
-                    <div class="card-body">
-                        <div class="media mb-3">
-                            <img src="path/to/profile-picture.jpg" class="mr-3 rounded-circle" alt="Profile Picture"
-                                 style="width: 50px; height: 50px;">
-                            <div class="media-body">
-                                <h5 class="mt-0">Username</h5>
-                                Location
-                            </div>
+                            {#                        {% endfor %}#}
                         </div>
-                        <div class="media mb-3">
-                            <img src="path/to/profile-picture.jpg" class="mr-3 rounded-circle" alt="Profile Picture"
-                                 style="width: 50px; height: 50px;">
-                            <div class="media-body">
-                                <h5 class="mt-0">Username</h5>
-                                Location
-                            </div>
-                        </div>
-                        <!-- Add more users as needed -->
                     </div>
                 </div>
 
+                <!-- Third column -->
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-row post-header col-12 py-2 px-3Ō">
+                            Users
+                        </div>
+                        <div class="card-body">
+                            <div class="media mb-3">
+                                <img src="path/to/profile-picture.jpg" class="mr-3 rounded-circle" alt="Profile Picture"
+                                     style="width: 50px; height: 50px;">
+                                <div class="media-body">
+                                    <h5 class="mt-0">Username</h5>
+                                    Location
+                                </div>
+                            </div>
+                            <div class="media mb-3">
+                                <img src="path/to/profile-picture.jpg" class="mr-3 rounded-circle" alt="Profile Picture"
+                                     style="width: 50px; height: 50px;">
+                                <div class="media-body">
+                                    <h5 class="mt-0">Username</h5>
+                                    Location
+                                </div>
+                            </div>
+                            <!-- Add more users as needed -->
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
-
 
 
 {% endblock %}
