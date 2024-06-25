@@ -1,6 +1,6 @@
 import uuid
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractUser
 from django.db.models.signals import post_save, post_delete
 from django.urls import reverse
 from django.utils.text import slugify
@@ -31,19 +31,21 @@ class Follow(models.Model):
     following = models.ForeignKey(User, on_delete=models.CASCADE, related_name="following")
 
 
+def add_post(instance, created, **kwargs):
+    if created:
+        post = instance
+        user = post.user
+        followers = Follow.objects.filter(following=user)
+        for follower in followers:
+            stream = Stream(post=post, user=follower.follower, date=post.posted, following=user)
+            stream.save()
+
+
 class Stream(models.Model):
     following = models.ForeignKey(User, on_delete=models.CASCADE, related_name="stream_following")
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="stream_user")
     post = models.ForeignKey(Post, on_delete=models.CASCADE, null=True)
     date = models.DateTimeField()
 
-    def add_post(sender, instance, *args, **kwargs):
-        post = instance
-        user = post.user
-        followers = Follow.objects.all().filter(following=user)
-        for follower in followers:
-            stream = Stream(post=post, user=follower.follower, date=post.posted, following=user)
-            stream.save()
 
-
-post_save.connect(Stream.add_post, sender=Post)
+post_save.connect(add_post, sender=Post)

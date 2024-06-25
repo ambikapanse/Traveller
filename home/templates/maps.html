@@ -1,4 +1,55 @@
-{% extends 'base.html' %}
-{% block start %}
-This is MAPS
-{% endblock %}
+{#Base HTML doc with Navbar#}
+<!DOCTYPE html>
+<html lang="en">
+<head style="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/home/">Traveller</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+        <div class="mx-auto position-absolute search-bar-container">
+            <form action="{% url 'search' %}" method="GET" class="input-group">
+                <input class="form-control py-2 border-right-0 border" type="search" placeholder="Search" name="q" id="example-search-input">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary border-left-0 border" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/livestreams/">L</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/maps/">M</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/chats/">M</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/notifications/">N</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/dashboard/">User</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div id="map" style="height: 500px;"></div>
+
+</body>
+</html>
