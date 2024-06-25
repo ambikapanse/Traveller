@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 
 
 def home(request):
-    user = request.user
+    user = request.user.id
     posts = Stream.objects.filter(user=user)
     group_ids = []
     for post in posts:
