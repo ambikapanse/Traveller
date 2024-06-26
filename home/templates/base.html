@@ -1,4 +1,5 @@
 {#Base HTML doc with Navbar#}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head style="style.css">
@@ -9,9 +10,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <style>
-        #mapid { height: 100vh; } /* Adjust height as needed */
-    </style>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">

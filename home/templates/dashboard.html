@@ -1,4 +1,38 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block start %}
-This is USER DASHBOARD
+    <div class="profile-card">
+        <div class="profile-header">
+            <div class="profile-picture">
+                <img src="{% static 'path/to/profile_picture.jpg' %}" alt="Profile Picture">
+            </div>
+            <div class="profile-info">
+                <h2>Username</h2>
+                <div class="profile-stats">
+                    <div>
+                        <strong>20</strong><br>
+                        Places Travelled
+                    </div>
+                    <div>
+                        <strong>300</strong><br>
+                        Followers
+                    </div>
+                    <div>
+                        <strong>180</strong><br>
+                        Following
+                    </div>
+                </div>
+                <div class="profile-bio">
+                    <p>Bio goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque.</p>
+                </div>
+                <button class="follow-button">Follow</button>
+            </div>
+        </div>
+        <div class="gallery">
+{#            <img src="{% static 'path/to/post1.jpg' %}" alt="Post 1">#}
+{#            <img src="{% static 'path/to/post2.jpg' %}" alt="Post 2">#}
+{#            <img src="{% static 'path/to/post3.jpg' %}" alt="Post 3">#}
+            <!-- Add more posts as needed -->
+        </div>
+    </div>
 {% endblock %}
