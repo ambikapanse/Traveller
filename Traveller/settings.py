@@ -85,17 +85,17 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Traveller.wsgi.application'
 
 
-# Database
+# Postgresql Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
+        'NAME': 'capsule_1',
         'USER': 'postgres',
-        'PASSWORD': 'yXExMmXXoAZGIBWnTNLNfyQxHLohQLVp',
-        'HOST': 'viaduct.proxy.rlwy.net',
-        'PORT': '13356',
+        'PASSWORD': 'capsule_8055',
+        'HOST': 'database-1.cjmgwqqievpk.ap-south-1.rds.amazonaws.com',
+        'PORT': '5432',
 
     }
 }
