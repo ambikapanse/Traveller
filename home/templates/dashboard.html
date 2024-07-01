@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block start %}
     <div class="profile-card">
         <div class="profile-header">
@@ -7,7 +8,7 @@
                 <img src="{% static 'path/to/profile_picture.jpg' %}" alt="Profile Picture">
             </div>
             <div class="profile-info">
-                <h2>Username</h2>
+                <h2>{{ request.user.username }}</h2>  {# Display username dynamically #}
                 <div class="profile-stats">
                     <div>
                         <strong>20</strong><br>
@@ -25,14 +26,11 @@
                 <div class="profile-bio">
                     <p>Bio goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque.</p>
                 </div>
-                <button class="follow-button">Follow</button>
+                <a href="{% url 'home:user_logout' %}" class="btn btn-danger">Logout</a>  {# Logout button #}
             </div>
         </div>
         <div class="gallery">
-{#            <img src="{% static 'path/to/post1.jpg' %}" alt="Post 1">#}
-{#            <img src="{% static 'path/to/post2.jpg' %}" alt="Post 2">#}
-{#            <img src="{% static 'path/to/post3.jpg' %}" alt="Post 3">#}
-            <!-- Add more posts as needed -->
+            <!-- Add gallery items here -->
         </div>
     </div>
 {% endblock %}

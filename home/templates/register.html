@@ -1,26 +1,23 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block start %}
-<div class="container mt-4">
-    <form method="post">
-        {% csrf_token %}
-        <div class="form-group">
-            <label for="id_username">Username:</label>
-            <input type="text" name="username" class="form-control" id="id_username" required>
-        </div>
-        <div class="form-group">
-            <label for="id_email">Email:</label>
-            <input type="email" name="email" class="form-control" id="id_email" required>
-        </div>
-        <div class="form-group">
-            <label for="id_password1">Password:</label>
-            <input type="password" name="password1" class="form-control" id="id_password1" required>
-        </div>
-        <div class="form-group">
-            <label for="id_password2">Confirm Password:</label>
-            <input type="password" name="password2" class="form-control" id="id_password2" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Register</button>
-    </form>
-</div>
+    <div class="container mt-4">
+        <h2>Register</h2>
+        <form method="post" action="{% url 'home:user_register' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+    </div>
+
+    <script>
+        {% if messages %}
+            var message = "{{ messages }}";
+            alert(message);  // Display message as an alert
+            {% for message in messages %}
+                alert("{{ message }}");  // Iterate through messages if there are multiple
+            {% endfor %}
+        {% endif %}
+    </script>
 {% endblock %}

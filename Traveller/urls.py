@@ -26,8 +26,7 @@ from search.views import *
 from home.views import home, user_login, user_register, user_logout
 
 urlpatterns = [
-    path('',home,name="home"),
-    path('', include('home.urls')),
+   path('', include('home.urls')),
     path('livestreams/',livestreams,name="livestreams"),
     path('maps/',maps,name="maps"),
     path('chats/',messages,name="chats"),
@@ -36,3 +35,5 @@ urlpatterns = [
     path('search/',search,name="search"),
     path('admin/', admin.site.urls),
 ]
+
+

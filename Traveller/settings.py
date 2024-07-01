@@ -63,6 +63,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
 ROOT_URLCONF = 'Traveller.urls'
 
 TEMPLATES = [
@@ -142,9 +144,10 @@ STATICFILES_DIRS = [
 ]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
-LOGIN_REDIRECT_URL = '/dashboard/'
+
+LOGIN_REDIRECT_URL = 'home/'
 LOGOUT_REDIRECT_URL = 'user_login'
-LOGIN_URL = 'user_login'
+LOGIN_URL = 'home:user_login'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 

@@ -1,16 +1,18 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
-from .forms import UserRegistrationForm
+from .forms import *
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from dashboard.models import Stream
-
+from django.contrib.auth.models import User
 
 try:
     from dashboard.models import Stream, Post
 except ImportError:
     pass
 
+@login_required
 def home(request):
     user = request.user.id
     posts = Stream.objects.filter(user=user)
@@ -24,35 +26,41 @@ def home(request):
     print(post_items)
     return render(request, "index.html", context)
 
-def user_login(request):
-    if request.method == 'POST':
-        form = AuthenticationForm(request, data=request.POST)
-        if form.is_valid():
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-            user = authenticate(username=username, password=password)
-            if user is not None:
-                login(request, user)
-                return redirect('dashboard')  # Redirect to the dashboard after login
-    else:
-        form = AuthenticationForm()
-    return render(request, 'login.html', {'form': form})
-
+# Register view
 def user_register(request):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=password)
-            if user is not None:
-                login(request, user)
-                return redirect('home')
+            user = form.save()
+            username = form.cleaned_data['username']
+            login(request, user)
+            messages.success(request, f'Account created for {username}! You can now log in.')
+            return redirect('home:user_login')
     else:
         form = UserRegistrationForm()
     return render(request, 'register.html', {'form': form})
 
+#user_login
+def user_login(request):
+    if request.method == 'POST':
+        form = UserLoginForm(request=request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                messages.success(request, f'Welcome back, {username}!')
+                return redirect('home:home')
+            else:
+                messages.error(request, 'Invalid username or password. Please try again.')
+        else:
+            messages.error(request, 'Invalid username or password. Please try again.')
+    else:
+        form = UserLoginForm()
+    return render(request, 'login.html', {'form': form})
+
 def user_logout(request):
     logout(request)
-    return redirect('user_login')
+    return redirect('home:user_login')
+
