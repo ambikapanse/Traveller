@@ -12,6 +12,10 @@
     margin-left: 10px;
 }
 
+.nav-link-pfp{
+    margin:0;
+}
+
 .search-bar-container {
     left: 50%;
     transform: translateX(-50%);
@@ -29,158 +33,194 @@
 
 /*POSTS*/
 
-    .custom-img-container{
-        display: flex;
-        flex-direction: column;
-        align-items: center; /* Center align items horizontally */
+.custom-img-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Center align items horizontally */
 
-    }
-        .custom-img {
-            width: 96%;
-            height: 96%;
-            object-fit: cover; /* Ensures the image covers the entire area */
-        }
+}
 
-        .post-header h4 {
-            font-size: 1.2rem;
-            margin: 0;
-        }
+.custom-img {
+    width: 96%;
+    height: 96%;
+    object-fit: cover;
+    /* Ensures the image covers the entire area */
+}
 
-        .card-body {
-            padding: 10px 10px;
-        }
+.post-header h4 {
+    font-size: 1.2rem;
+    margin: 0;
+}
 
-        .card-title {
-            font-size: 1rem;
-            margin-bottom: 10px;
-        }
+.card-body {
+    padding: 10px 10px;
+}
 
-        .card-text {
-            font-size: 0.9rem;
-        }
+.card-title {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
 
-        .post-footer i {
-            font-size: 1.2rem;
-            cursor: pointer;
-        }
+.card-text {
+    font-size: 0.9rem;
+}
 
-        .post-footer .fa-ellipsis-v {
-            float: right;
-        }
+.post-footer i {
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.post-footer .fa-ellipsis-v {
+    float: right;
+}
+
 /* DASHBOARD */
+
+.user-pfp{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+}
 .profile-card {
-            width: 60%;
-            margin: 20px auto;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .profile-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .profile-picture {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            overflow: hidden;
-        }
-        .profile-picture img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .profile-info {
-            flex: 1;
-            margin-left: 20px;
-        }
-        .profile-info h2 {
-            margin: 0;
-        }
-        .profile-stats {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 10px;
-        }
-        .profile-stats div {
-            text-align: center;
-        }
-        .profile-bio {
-            margin-top: 10px;
-        }
-        .follow-button {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            margin-top: 20px;
-            background-color: #3897f0;
-            color: #fff;
-            text-align: center;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-        .gallery img {
-            width: 30%;
-            margin: 1.5%;
-            border-radius: 5px;
-        }
+    width: 60%;
+    margin: 50px 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-info {
+    flex: 1;
+    margin-left: 20px;
+}
+
+.profile-info h2 {
+    margin: 0;
+}
+
+.profile-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.profile-stats div {
+    text-align: center;
+}
+
+.profile-bio {
+    margin-top: 10px;
+}
+
+.follow-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #3897f0;
+    color: #fff;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.gallery img {
+    width: 30%;
+    margin: 1.5%;
+    border-radius: 5px;
+}
+
 /* MAPS */
-        #mapid { height: 100vh; } /* Adjust height as needed */
+#mapid {
+    height: 100vh;
+}
+
+/* Adjust height as needed */
 
 
 /* Login card styles */
 .login-card {
     max-width: 800px;
     margin: 0 auto;
-    background-color: #f0f0f04d; /* Light grey background color */
+    background-color: #f0f0f04d;
+    /* Light grey background color */
     border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden; /* Ensure contents don't overflow */
-        }
+    overflow: hidden;
+    /* Ensure contents don't overflow */
+}
 
-        .login-card .card-body {
-            padding: 30px; /* Increased padding */
-        }
+.login-card .card-body {
+    padding: 30px;
+    /* Increased padding */
+}
 
-        .login-card .card-title {
-            font-size: 2rem; /* Larger font size */
-            text-align: center;
-            margin-bottom: 30px; /* Increased margin */
-        }
+.login-card .card-title {
+    font-size: 2rem;
+    /* Larger font size */
+    text-align: center;
+    margin-bottom: 30px;
+    /* Increased margin */
+}
 
-        .login-card .form-group {
-            margin-bottom: 20px; /* Adjusted spacing */
-        }
+.login-card .form-group {
+    margin-bottom: 20px;
+    /* Adjusted spacing */
+}
 
-        .login-card .btn-primary {
-            width: 100%;
-        }
+.login-card .btn-primary {
+    width: 100%;
+}
 
-        .login-card p {
-            text-align: center;
-            margin-top: 15px; /* Adjusted margin */
-        }
+.login-card p {
+    text-align: center;
+    margin-top: 15px;
+    /* Adjusted margin */
+}
 
-        .login-image-container {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+.login-image-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-        .login-image {
-            max-width: 100%;
-            width: auto;    
-            max-height: 100%;
-            object-fit: contain; /* Maintain aspect ratio */
-        }
+.login-image {
+    max-width: 100%;
+    width: auto;
+    max-height: 100%;
+    object-fit: contain;
+    /* Maintain aspect ratio */
+}
+

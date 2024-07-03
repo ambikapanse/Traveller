@@ -47,25 +47,31 @@
                 <div class="col-md-6">
                     <div class="tab-content">
                         <div id="tab2" class="container-fluid tab-pane active">
-                            {#                        {% for post in post_items %}#}
+                            {% for post in post_items %}
                             <div class="card custom-card">
                                 <div class="row post-header col-12 py-2 px-3">
                                     <div class="col-6 float-left">
-                                        {#                                        <h4>{{post.location}}</h4>#}
-                                        <h4>Mumbai</h4>
+                                        <h4>{{post.location}}</h4>
                                     </div>
                                 </div>
                                 <div class="custom-img-container">
                                     <img class="card-img custom-img"
-                                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Marine_Drive_Skyline.jpg/1200px-Marine_Drive_Skyline.jpg"
-                                         alt="Marine Drive, Mumbai">
+                                         src="{{ post.picture.url }}"
+                                         alt="{{ post.location }}">
                                 </div>
                                 <div class="card-body px-3">
                                     <div class="d-flex justify-content-between">
-                                        <h5 class="card-title">username</h5>
-                                        <h5 class="card-title">1000 Likes</h5>
+                                        <h5 class="card-title">{{ post.user }}</h5>
+                                        <h5 class="card-title">{{ post.likes }} Likes</h5>
+                                        <a href="#" class="like-button" data-post-id="{{ post.id }}">
+                                            {% if user in post.like_set.all %}
+                                                Unlike
+                                            {% else %}
+                                                Like
+                                            {% endif %}
+                                        </a>
                                     </div>
-                                    <p class="card-text">Random sample text for the caption.</p>
+                                    <p class="card-text">{{ post.caption }}</p>
                                 </div>
                                 <div class="row post-footer px-3 pb-3">
                                     <div class="col-1 float-left text-left">
@@ -76,7 +82,7 @@
                                     </div>
                                 </div>
                             </div>
-                            {#                        {% endfor %}#}
+                        {% endfor %}
                         </div>
                     </div>
                 </div>
@@ -113,5 +119,35 @@
         </div>
     </div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.like-button').forEach(function(button) {
+                button.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    var postId = this.getAttribute('data-post-id');
+                    var likeButton = this;
+                    var likesCount = likeButton.previousElementSibling.querySelector('.likes-count');
+    
+                    fetch(`/like/${postId}/`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': '{{ csrf_token }}'
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        likesCount.textContent = data.likes;
+                        if (likeButton.textContent.trim() === 'Like') {
+                            likeButton.textContent = 'Unlike';
+                        } else {
+                            likeButton.textContent = 'Like';
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+                });
+            });
+        });
+    </script>
 
 {% endblock %}

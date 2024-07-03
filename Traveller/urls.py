@@ -26,14 +26,17 @@ from search.views import *
 from home.views import home, user_login, user_register, user_logout
 
 urlpatterns = [
-   path('', include('home.urls')),
+   path('', include('home.urls', namespace='home')),
+#    path('dashboard/', include('dashboard.urls')),
     path('livestreams/',livestreams,name="livestreams"),
     path('maps/',maps,name="maps"),
     path('chats/',messages,name="chats"),
     path('notifications/',notifications,name="notifications"),
-    path('dashboard/',dashboard,name="dashboard"),
     path('search/',search,name="search"),
     path('admin/', admin.site.urls),
 ]
 
+from django.conf import settings
+from django.conf.urls.static import static
 
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
