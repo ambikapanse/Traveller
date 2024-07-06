@@ -47,7 +47,55 @@ header,
   color: #FFBD59 !important; /* Apply text color to navbar links and brand */
 }
 
+/* static/styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body,
+input,
+button {
+    font-size: 1rem;
+    font-family: "Poppins", sans-serif;
+    color: #050A30; /* Set body text color */
+}
+
+body {
+    background-color: #050A30; /* Set body background color */
+}
+
+input,
+button {
+    border: none;
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+}
+
 /*NAVBAR*/
+header,
+.navbar,
+.navbar-nav,
+.navbar-brand,
+.navbar-toggler,
+.navbar-collapse {
+  background-color: #2B315B !important; /* Apply background color to navbar */
+  font-family: 'Quicksand', sans-serif !important; /* Apply Quicksand font to navbar */
+  color: #FFBD59 !important; /* Apply text color to navbar */
+}
+
+.navbar-nav .nav-link,
+.navbar-brand,
+.navbar-toggler-icon {
+  color: #FFBD59 !important; /* Apply text color to navbar links and brand */
+}
+
 .navbar-nav {
     align-items: center;
     margin-bottom: 10px;
@@ -101,7 +149,14 @@ header,
     font-size: 1.2rem;
     margin: 0;
 }
+.post-header h4 {
+    font-size: 1.2rem;
+    margin: 0;
+}
 
+.card-body {
+    padding: 10px 10px;
+}
 .card-body {
     padding: 10px 10px;
 }
@@ -110,7 +165,14 @@ header,
     font-size: 1rem;
     margin-bottom: 10px;
 }
+.card-title {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
 
+.card-text {
+    font-size: 0.9rem;
+}
 .card-text {
     font-size: 0.9rem;
 }
@@ -118,6 +180,14 @@ header,
 .post-footer i {
     font-size: 1.2rem;
     cursor: pointer;
+}
+.post-footer i {
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.post-footer .fa-ellipsis-v {
+    float: right;
 }
 
 .post-footer .fa-ellipsis-v {
@@ -213,6 +283,17 @@ header,
 
 /* Adjust height as needed */
 
+/* Login card styles */
+.body.login-page {
+    background: url('/static/images/loginlogo1.png') center top/cover fixed no-repeat;
+    height: 100vh; /* Adjusted viewport height */
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: 100%; /* Increase background size slightly */
+    background-position: center left; /* Move background slightly to the left */
+}
 
 /* Login card styles */
 .body.login-page {
@@ -228,6 +309,8 @@ header,
 .login-card {
     max-width: 500px;
     height: 450px;
+    max-width: 500px;
+    height: 450px;
     margin: 0 auto;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
@@ -235,6 +318,36 @@ header,
     border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-right: 80px;
+    padding-left: 80px;
+    margin-left: 255px;
+    margin-bottom: 30px;
+    transition: transform 0.3s ease; /* Added transition for smooth hover effect */
+}
+
+.login-card:hover {
+    transform: scale(1.05); /* Scale up slightly on hover */
+}
+
+@keyframes breatheOnce {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+
+.login-card .card-title,
+.login-card .form-group,
+.login-card .btn-primary,
+.login-card p {
+    color: white;
+    font-weight: 300;
+}
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -282,6 +395,22 @@ header,
     background-color: #050A30;
     color: #FFBD59;
 }
+.login-card .card-body {
+    padding: 15px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-card .form-control {
+    height: 35px; /* Adjusted height of form controls */
+    font-size: 1.2rem; /* Increased font size */
+    width: 350px; /* Full width input fields */
+    background-color: #050A30;
+    color: #FFBD59;
+}
 
 .login-card .card-title {
     font-size: 38px;
@@ -289,7 +418,17 @@ header,
     margin-bottom: 45px;
     margin-top: 0px;
 }
+.login-card .card-title {
+    font-size: 38px;
+    text-align: center;
+    margin-bottom: 45px;
+    margin-top: 0px;
+}
 
+.login-card .form-group {
+    margin-bottom: 20px;
+    width: 100%;
+}
 .login-card .form-group {
     margin-bottom: 20px;
     width: 100%;
@@ -306,7 +445,133 @@ header,
     max-width: 200px; /* Set a max width for the button */
     margin: 0 auto; /* Center the button horizontally */
 }
+.login-card .btn-primary {
+    background: linear-gradient(135deg, #004c4c, #008080);
+    border: none;
+    border-radius: 15px;
+    padding: 12px;
+    cursor: pointer;
+    display: block;
+    width: 100%; /* Make the button take full width */
+    max-width: 200px; /* Set a max width for the button */
+    margin: 0 auto; /* Center the button horizontally */
+}
 
+.login-card p {
+    text-align: center;
+    margin-top: 15px;
+}
+
+
+.register-link {
+    color: #FFF2DE; /* Set text color to white */
+    font-size: 1.1rem; /* Increase font size as needed */
+    text-decoration: none; /* Remove underline from link */
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+.register-link:hover {
+    color: #FFBD59; /* Change text color on hover */
+}
+
+/* Register page styles */
+.body.register-page {
+    background: url('/static/images/registerlogo1.png') center top/cover fixed no-repeat;
+    height: 100vh; /* Adjusted viewport height */
+    margin: 0;
+    display: flex;
+    justify-content: flex-end; /* Align content to the right */
+    align-items: center;
+    background-size: cover; /* Adjust background size */
+    background-position: center left; /* Move background slightly to the left */
+}
+
+.register-card {
+    max-width: 500px;
+    height: 500px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    margin: 5px 220px 40px;
+    transition: transform 0.3s ease;
+}
+
+.register-card:hover {
+    transform: scale(1.05);
+}
+
+.register-card .card-title,
+.register-card .form-group,
+.register-card .btn-primary,
+.register-card p {
+    color: white;
+    font-weight: 300;
+    text-align: center;
+}
+
+.register-card .card-body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-card .form-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align labels and inputs to the start */
+    margin-bottom: 15px;
+}
+
+.register-card .form-group label {
+    margin-bottom: 5px; /* Add space between label and input */
+    width: 100%; /* Ensure the label takes the full width */
+}
+
+.register-card .form-control {
+    height: 35px; /* Adjusted height of form controls */
+    font-size: 1.2rem; /* Increased font size */
+    width: 325px; /* Full width input fields */
+    background-color: #050A30;
+    color: #FFBD59;
+}
+
+.register-card .card-title {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+.register-card .btn-primary {
+    background: linear-gradient(135deg, #004c4c, #008080);
+    border: none;
+    border-radius: 15px;
+    padding: 12px;
+    cursor: pointer;
+    display: block;
+    width: 100%; /* Make the button take full width */
+    max-width: 200px; /* Set a max width for the button */
+    margin: 0 auto; /* Center the button horizontally */
+}
+
+.login-link {
+    color: #FFF2DE; /* Set text color to white */
+    font-size: 1.1rem; /* Increase font size as needed */
+    text-decoration: none; /* Remove underline from link */
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+.login-link:hover {
+    color: #FFBD59; /* Change text color on hover */
+}
 .login-card p {
     text-align: center;
     margin-top: 15px;
