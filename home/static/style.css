@@ -296,25 +296,12 @@ header,
 }
 
 /* Login card styles */
-.body.login-page {
-    background: url('/static/images/loginlogo1.png') center top/cover fixed no-repeat;
-    height: 100vh; /* Adjusted viewport height */
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-size: 100%; /* Increase background size slightly */
-    background-position: center left; /* Move background slightly to the left */
-}
 .login-card {
-    max-width: 500px;
-    height: 450px;
     max-width: 500px;
     height: 450px;
     margin: 0 auto;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
-    /* Light grey background color */
     border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -348,53 +335,7 @@ header,
     color: white;
     font-weight: 300;
 }
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-right: 80px;
-    padding-left: 80px;
-    margin-left: 255px;
-    margin-bottom: 30px;
-    transition: transform 0.3s ease; /* Added transition for smooth hover effect */
-}
 
-.login-card:hover {
-    transform: scale(1.05); /* Scale up slightly on hover */
-}
-
-@keyframes breatheOnce {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-}
-
-
-.login-card .card-title,
-.login-card .form-group,
-.login-card .btn-primary,
-.login-card p {
-    color: white;
-    font-weight: 300;
-}
-
-.login-card .card-body {
-    padding: 15px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.login-card .form-control {
-    height: 35px; /* Adjusted height of form controls */
-    font-size: 1.2rem; /* Increased font size */
-    width: 350px; /* Full width input fields */
-    background-color: #050A30;
-    color: #FFBD59;
-}
 .login-card .card-body {
     padding: 15px;
     width: 100%;
@@ -418,33 +359,12 @@ header,
     margin-bottom: 45px;
     margin-top: 0px;
 }
-.login-card .card-title {
-    font-size: 38px;
-    text-align: center;
-    margin-bottom: 45px;
-    margin-top: 0px;
-}
 
 .login-card .form-group {
     margin-bottom: 20px;
     width: 100%;
 }
-.login-card .form-group {
-    margin-bottom: 20px;
-    width: 100%;
-}
 
-.login-card .btn-primary {
-    background: linear-gradient(135deg, #004c4c, #008080);
-    border: none;
-    border-radius: 15px;
-    padding: 12px;
-    cursor: pointer;
-    display: block;
-    width: 100%; /* Make the button take full width */
-    max-width: 200px; /* Set a max width for the button */
-    margin: 0 auto; /* Center the button horizontally */
-}
 .login-card .btn-primary {
     background: linear-gradient(135deg, #004c4c, #008080);
     border: none;
@@ -461,7 +381,6 @@ header,
     text-align: center;
     margin-top: 15px;
 }
-
 
 .register-link {
     color: #FFF2DE; /* Set text color to white */
