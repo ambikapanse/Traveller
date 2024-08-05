@@ -1,67 +1,104 @@
 {% extends 'base.html' %}
 {% block start %}
+
+<head>
+    <style>
+        .col-md-3 {
+            padding-top: 25px;
+            padding-left: 0px;
+            padding-right: 20px;
+            overflow-y: hidden;
+        }
+    </style>
+</head>
+<div class="container-fluid">
     <div class="row justify-content-center">
 
         <div class="col-md-9">
             <div class="container mt-4">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Map Example</h5>
-                        <!-- Map container -->
+                        <div class="card-header py-2 px-3">
+                            <h4>Map</h4>
+                        </div>
+                            <!-- Map container -->
                         <div id="mapid"></div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Bootstrap JS and Leaflet JS -->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
-        <!-- Initialize Leaflet map -->
-        <script>
-            var mymap = L.map('mapid').setView([23.0225, 72.5714], 5);
-
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-                maxZoom: 18,
-            }).addTo(mymap);
-
-            L.marker([23.0225, 72.5714]).addTo(mymap)
-                .bindPopup('User').openPopup();
-        </script>
-
         <!-- Users column -->
         <div class="col-md-3">
-            <div class="container mt-4">
-                <div class="card">
-                    <div class="card-row post-header col-12 py-2 px-3Ō">
-                        <h4>People</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="media mb-3">
-                            <img src="path/to/profile-picture.jpg" class="mr-3 rounded-circle" alt="Profile Picture"
-                                 style="width: 50px; height: 50px;">
-                            <div class="media-body">
-                                <h5 class="mt-0">Username</h5>
-                                Location
-                            </div>
-                        </div>
-                        <div class="media mb-3">
-                            <img src="path/to/profile-picture.jpg" class="mr-3 rounded-circle" alt="Profile Picture"
-                                 style="width: 50px; height: 50px;">
-                            <div class="media-body">
-                                <h5 class="mt-0">Username</h5>
-                                Location
-                            </div>
-                        </div>
-                        <!-- Add more users as needed -->
-                    </div>
+            <div class="card people-card">
+                <div class="card-header py-2 px-3">
+                    <h4>People</h4>
                 </div>
+                <div class="card-body">
+                    {% if following_list %}
+                    {% for profile in following_list %}
+                    <a href="{% url 'home:user_dashboard' user_id=profile.user.id %}" class="card-title"
+                        style="font-weight: 600; color:black">
+                        <div class="media mb-3">
 
+                            <img src="{{ profile.profile_picture.url }}" class="mr-3 rounded-circle"
+                                alt="Profile Picture" style="width: 50px; height: 50px;">
+                            <div class="media-body">
+                                <h5 class="mt-0">@{{profile.user.username}}</h5>
+                                {{profile.location}}
+                            </div>
+                        </div>
+                    </a>
+                    {% endfor %}
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>
+</div>
+
+<!-- Bootstrap JS and Leaflet JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<!-- Initialize Leaflet map -->
+<script>
+    var mymap = L.map('mapid');
+
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        maxZoom: 8,
+    }).addTo(mymap);
+
+    var markers = L.featureGroup().addTo(mymap);
+    var bounds = L.latLngBounds();
+    var locations = JSON.parse('{{ locations|escapejs }}'); // Ensure this is parsed as an array
+    console.log("Locations:", locations);
+    for (const location of locations) {
+        var lat = location[0];
+        var lon = location[1];
+        var tag = location[2];
+        console.log("idhr hu")
+        console.log(lat)
+
+
+        var marker = L.marker([lat, lon]).addTo(markers)
+            .bindPopup(tag)
+            .openPopup();
+
+
+        bounds.extend(marker.getLatLng());
+    }
+
+    mymap.fitBounds(bounds, {
+        padding: [30, 30]
+    });
+
+
+
+</script>
+
 {% endblock %}

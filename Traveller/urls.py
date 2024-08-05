@@ -30,8 +30,8 @@ urlpatterns = [
 #    path('dashboard/', include('dashboard.urls')),
     path('livestreams/',livestreams,name="livestreams"),
     path('maps/',maps,name="maps"),
-    path('chats/',messages,name="chats"),
-    path('notifications/',notifications,name="notifications"),
+    path('chats/',chats,name="chats"),
+#    path('notifications/',notifications,name="notifications"),
     path('search/',search,name="search"),
     path('admin/', admin.site.urls),
 ]

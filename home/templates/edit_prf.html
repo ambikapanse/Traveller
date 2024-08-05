@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block start %}
+
+<head>
+    <style>
+        /* Add this to your CSS file or <style> block */
+        .has-background-dark {
+            background-color: #050A30;
+            /* Dark background color */
+            color: azure;
+            /* Text color */
+        }
+
+        .has-text-azure {
+            color: azure;
+            /* Text color for labels and headings */
+        }
+
+        .card-content {
+            padding: 2rem;
+            border: 2px solid azure;
+        }
+
+        .field input,
+        .field textarea {
+            border: 1px solid azure;
+            border-radius: 4px;
+            padding: 0.5rem;
+            width: 100%;
+            background-color: #050A30;
+            color: azure;
+        }
+
+        .field .checkbox {
+            display: flex;
+            align-items: center;
+            color: azure;
+        }
+
+        .field .checkbox input[type="checkbox"] {
+            margin-right: 0.5rem;
+        }
+
+        .control {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0.5rem;
+        }
+
+        /* Add this to your CSS file or <style> block */
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.button-card {
+    display: inline-flex;
+            align-items: center;
+            color: white;
+            background-color: #050A30;
+            border: 1px solid #ddd;
+            padding: 0.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: background-color 0.3s;
+}
+
+.button-card:hover {
+    color: #050A30;
+    background-color: azure; /* Darker button color on hover */
+}
+
+.button-card:focus {
+    outline: none; /* Remove focus outline */
+}
+
+    </style>
+</head>
+
+<div class="columns is-mobile is-centered">
+    <div class="column is-half">
+        <div class="card">
+            <div class="card-content has-background-dark">
+                <h3 class="title is-3" style="color: #FFBD59;">Edit Your Profile</h3>
+
+                <form method="post" action="" enctype="multipart/form-data" role="form">
+                    {% csrf_token %}
+
+                    <div class="field">
+                        <label class="label has-text-azure">Profile Picture</label>
+                        <div class="control">
+                            {{ form.profile_picture }}
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label has-text-azure">Bio</label>
+                        <div class="control">
+                            {{ form.bio }}
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label has-text-azure">Location</label>
+                        <div class="control">
+                            {{ form.location }}
+                        </div>
+                    </div>
+<div class="button-container">
+                        <div class="control">
+                            <button type="submit" name="action" class="button-card">
+                                Save Changes
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

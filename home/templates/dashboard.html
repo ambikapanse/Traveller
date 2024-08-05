@@ -1,143 +1,252 @@
-
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
+{% block start %}
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Traveller</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    <style>
+        .profile-container {
+            display: flex;
+            justify-content: center;
+            /* align-items: center; */
+
+        }
+
+        .button-card {
+            display: inline-flex;
+            align-items: center;
+            color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: background-color 0.3s;
+        }
+        .follow-button-card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: azure;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+            padding: 8px;
+            transition: background-color 0.3s;
+        }
+        .unfollow-button-card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: azure;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+            padding: 8px;
+            transition: background-color 0.3s;
+        }
+        
+        .unfollow-button-card:hover{
+            color: red;
+            background-color: azure;
+        }
+        .follow-button-card:hover{
+            color: green;
+            background-color: azure;
+        }
+        .button-card:hover {
+            background-color: azure;
+        }
+
+        .button-card i {
+            margin-left: 10px;
+            /* Adjust as needed */
+            margin-top: 10px;
+            margin-bottom: 10px;
+            margin-right: 6px;
+            
+        }
+
+        .button-container {
+            display: flex;
+            padding-top: 50px;
+            flex-direction: column;
+        }
+
+        .profile-section {
+            display: flex;
+            justify-content: center;
+            /* Center horizontally */
+            align-items: center;
+            /* Center vertically */
+            flex-direction: column;
+            color: #ddd;
+        }
+
+        .h2 {
+            margin-top: 100px;
+        }
+
+
+        /* Style for the like icon */
+        .like-icon {
+            cursor: pointer;
+            /* Change cursor to pointer */
+            font-size: 1.5rem;
+            /* Adjust the size as needed */
+            transition: color 0.3s;
+            /* Smooth transition for color change */
+        }
+
+
+        /* Color when the heart icon is liked */
+        .like-icon.fas {
+            color: red;
+            /* Color when liked */
+        }
+    </style>
 </head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/home/">Traveller</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
 
-    <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
-        <div class="mx-auto position-absolute search-bar-container">
-            <form action="{% url 'search' %}" method="GET" class="input-group">
-                <input class="form-control py-2 border-right-0 border" type="search" placeholder="Search" name="q" id="example-search-input">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-secondary border-left-0 border" type="submit">
-                        <i class="fa fa-search"></i>
-                    </button>
+<div class="profile-container">
+    <div class="profile-card">
+        <div class="profile-header">
+            <div class="profile-section">
+                <h2>@{{ profile.user.username }}</h2>
+                <div class="profile-picture">
+                    {% if profile.profile_picture %}
+                    <img src="{{ profile.profile_picture.url }}" , alt="Profile Picture" ,
+                        placeholder="https://picsum.photos/200/300">
+                    {% endif %}
                 </div>
-            </form>
-        </div>
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="/livestreams/">L</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/maps/">M</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/chats/">M</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/notifications/">N</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="{% url 'home:user_logout' %}" style="color:red">Log Out</a>
-            </li>
-        </ul>
-    </div>
-</nav>
+                <h6 class="mt-3">last seen in: {{ profile.location }}</h6>
+            </div>
 
-<div class="profile-card">
-    <div class="profile-header">
-        <div class="profile-picture">
-            {% if profile.profile_picture %}
-            <img src="{{ profile.profile_picture.url }}" , alt="Profile Picture", placeholder="https://picsum.photos/200/300">
-                        {% endif %}
-        </div>
-        <div class="profile-info">
-            <h2>{{ request.user.username }}</h2> {# Display username dynamically #}
-            <h4>{{ profile.location }}</h4>
-            <div class="profile-stats">
-                <div>
-                    <strong>{{ profile.places_travelled }}</strong><br>
-                    Places Travelled
+            <div class="profile-info">
+                <div class="profile-stats">
+                    <div>
+                        Places Travelled<br>
+                        <strong>{{ profile.places_travelled }}</strong>
+                    </div>
+                    <div>
+                        Followers<br>
+                        <strong>{{ profile.followers_count }}</strong>
+                    </div>
+                    <div>
+                        Following<br>
+                        <strong>{{ profile.following_count}}</strong>
+                    </div>
                 </div>
-                <div>
-                    <strong>{{ profile.followers_count }}</strong><br>
-                    Followers
-                </div>
-                <div>
-                    <strong>{{ profile.following_count}}</strong><br>
-                    Following
-                </div>
-            </div>
-            <div class="profile-bio">
-                <p>{{ profile.bio }}</p>
-            </div>
-            <a href="{% url 'home:create_post' %}" class="button is-primary">Create New Post</a>
-            <button id="editProfileBtn">Edit Profile</button>
 
-            <!-- Hidden form section -->
-            <div id="editProfileForm" style="display: none;">
-                <form method="post" enctype="multipart/form-data" action="{% url 'home:dashboard' %}">
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <button type="submit">Save Changes</button>
-                </form>
+                <div class="profile-bio">
+                    <h4 style="color: #FFBD59;"> Bio </h4>
+                    <p>{{ profile.bio }}</p>
+                </div>
+
+                {% if request.user.is_authenticated and request.user != profile.user %}
+                {% if follow_status == True %}
+                <a href="{% url 'home:follow' profile.user.id 0 %}" class="unfollow-button-card">Unfollow</a>
+                {% else %}
+                <a href="{% url 'home:follow' profile.user.id 1 %}" class="follow-button-card">Follow</a>
+                {% endif %}
+    
+                {% endif %}
+                
             </div>
+
 
         </div>
     </div>
+    {% if request.user.is_authenticated and request.user == profile.user %}
+    <div class="button-container">
+        <a href="{% url 'home:create_post' %}" class="button-card">
+            <i class="fas fa-plus"></i> <!-- Font Awesome plus icon -->
+        </a>
+        <a href="{% url 'home:edit_profile' %}" class="button-card">
+            <i class="fas fa-edit"></i> <!-- Font Awesome plus icon -->
+        </a>
+        <a href="{% url 'home:user_logout' %}" class="button-card">
+            <i class="fa fa-sign-out-alt"></i> <!-- Font Awesome plus icon -->
+        </a>
+    </div>
+    {% endif %}
 </div>
-<div class="row">
-    <div class="col-md-3 tab-content">
-        {% if post_items %}
-        <div id="tab2" class="container-fluid tab-pane active">
-            {% for post in post_items %}
+
+<!-- Posts -->
+<div class="container">
+    <div class="row">
+        {% if post_items_with_likes %}
+        {% for item in post_items_with_likes %}
+        <div class="col-md-4 col-sm-6 col-12 mt-3 mb-3">
             <div class="card custom-card">
                 <div class="row post-header col-12 py-2 px-3">
                     <div class="col-6 float-left">
-                        <h4>{{post.location}}</h4>
+                        <h4 style="font-weight: 600;">{{ item.post.location }}</h4>
                     </div>
                 </div>
                 <div class="custom-img-container">
-                    <img class="card-img custom-img" src="{{ post.picture.url }}" alt="{{ post.location }}">
+                    <img class="card-img custom-img" src="{{ item.post.picture.url }}" alt="{{ item.post.location }}">
                 </div>
                 <div class="card-body px-3">
-                    <div class="d-flex justify-content-between">
-                        <h5 class="card-title">{{ post.user }}</h5>
-                        <h5 class="card-title">{{ post.likes }} Likes</h5>
+                    <div class="d-flex justify-content-between align-items">
+                        <h5 class="card-title" style="font-weight: 600;">@{{ item.post.user }}</h5>
+                        <div class="d-flex">
+                            <h5 class="card-title mr-1" id="like-count-{{ item.post.id }}">{{ item.post.likes }}</h5>
+                            {% if item.liked %}
+                            <i class="fa-heart fas like-icon" id="like-icon-{{ item.post.id }}"
+                                data-post-id="{{ item.post.id }}"></i>
+                            {% else %}
+                            <i class="fa-heart far like-icon" id="like-icon-{{ item.post.id }}"
+                                data-post-id="{{ item.post.id }}"></i>
+                            {% endif %}
+
+                        </div>
                     </div>
-                    <p class="card-text">{{ post.caption }}</p>
+                    <p class="card-text">{{ item.post.caption }}</p>
                 </div>
-                <div class="row post-footer px-3 pb-3">
-                    <div class="col-1 float-left text-left">
-                        <i class="far fa-heart"></i>
-                    </div>
-                    <div class="col-1 float-right text-right">
-                        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-                    </div>
-                </div>
+
             </div>
-            {% endfor %}
         </div>
+        {% endfor %}
         {% else %}
-        <p>No posts yet.</p>
+        <p style="color:azure">No posts yet.</p>
         {% endif %}
     </div>
 </div>
 
-<!-- Button to toggle edit profile form -->
-
-<!-- JavaScript to toggle form visibility -->
 <script>
-    document.getElementById("editProfileBtn").addEventListener("click", function () {
-        document.getElementById("editProfileForm").style.display = "block";
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".like-icon").forEach(function (icon) {
+            icon.addEventListener("click", function () {
+                const postId = this.getAttribute("data-post-id");
+                const likeCountElement = document.getElementById(`like-count-${postId}`);
+                const iconElement = this; // Current clicked icon
+
+                fetch(`/like/${postId}/`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRFToken": "{{ csrf_token }}"
+                    },
+                    credentials: "same-origin"
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        // Update like count
+                        likeCountElement.textContent = data.likes;
+
+                        // Toggle icon classes
+                        if (iconElement.classList.contains("far")) {
+                            iconElement.classList.remove("far");
+                            iconElement.classList.add("fas");
+                        } else {
+                            iconElement.classList.remove("fas");
+                            iconElement.classList.add("far");
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+            });
+        });
     });
 </script>
-</body>
-</html>
+{% endblock %}

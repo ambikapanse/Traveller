@@ -1,153 +1,165 @@
 {% extends 'base.html' %}
 {% block start %}
-    <!-- Tab panes -->
-    <div class="container mt-4">
-        <div class="container-fluid custom-padding">
-            <div class="row justify-content-center">
-                <!-- First column -->
-                <div class="col-md-3">
-                    <div class="tab-content">
-                        <div id="tab1" class="container-fluid tab-pane active">
-                            <div class="card custom-card">
-                                <div class="row post-header col-12 py-2 px-3">
-                                    <div class="col-6 float-left">
-                                        <h4>Daily Stats</h4>
-                                    </div>
-                                </div>
-                                <div class="custom-img-container">
-                                    <img class="card-img custom-img" src="https://via.placeholder.com/300x300"
-                                         alt="Time Spent"></div>
-                                <div class="card-body px-3">
-                                    <h5 class="card-title">Time Spent</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- What's New -->
-                        <div class="container-fluid tab-pane active mt-3">
-                            <div class="card custom-card">
-                                <div class="row post-header col-12 py-2 px-3">
-                                    <div class="col-6 float-left">
-                                        <h4>What's New</h4>
-                                    </div>
-                                </div>
-                                <div class="custom-img-container">
-                                    <img class="card-img custom-img" src="https://via.placeholder.com/300x300"
-                                         alt="New Article">
-                                </div>
-                                <div class="card-body px-3">
-                                    <h5 class="card-title">Article</h5>
-                                </div>
-                            </div>
-                        </div>
+<!-- Tab panes -->
+
+<head>
+    <style>
+        .card {
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Style for the like icon */
+        .like-icon {
+            cursor: pointer;
+            /* Change cursor to pointer */
+            font-size: 1.5rem;
+            /* Adjust the size as needed */
+            transition: color 0.3s;
+            /* Smooth transition for color change */
+        }
+
+
+        /* Color when the heart icon is liked */
+        .like-icon.fas {
+            color: red;
+            /* Color when liked */
+        }
+    </style>
+</head>
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <!-- First column -->
+        <div class="col-md-3">
+            <!-- What's New -->
+            <div class="card custom-card">
+
+                <div class="card-row post-header col-12 py-2 px-3Ō">
+                    <h5>What's New</h5>
+                </div>
+                <a href="{{ article.link }}">
+                    <div class="custom-img-container">
+                        <img class="card-img custom-side-img" src="{{ article.img_url }}"
+                            placeholder="https://via.placeholder.com/300x300" alt="New Article">
+                    </div>
+                    <div class="card-body px-3">
+                        <h5 class="article-title">{{ article.title }}</h5>
+                    </div>
+                </a>
+            </div>
+            <!-- Daily Stats
+            <div class="card custom-card">
+                <div class="card-row post-header col-12 py-2 px-3Ō">
+                    <h5>Daily Stats</h5>
+                </div>
+                <div class="custom-img-container">
+                    <img class="card-img custom-side-img" src="https://via.placeholder.com/300x300" alt="New Article">
+                </div>
+                <div class="card-body px-3">
+                    <h5>Time Spent</h5>
+                </div>
+            </div> -->
+        </div>
+
+
+        <!-- Second column -->
+        <div class="col-md-6">
+            {% for item in post_items_with_likes %}
+            <div class="card custom-card">
+                <div class="row post-header col-12 py-2 px-3">
+                    <div class="col-6 float-left">
+                        <h3 style="font-weight: 400;">{{ item.post.location }}</h3>
                     </div>
                 </div>
-
-
-                <!-- Second column -->
-                <div class="col-md-6">
-                    <div class="tab-content">
-                        <!-- <div id="tab2" class="container-fluid tab-pane active"> -->
-                            {% for post in post_items %}
-                            <div class="card custom-card">
-                                <div class="row post-header col-12 py-2 px-3">
-                                    <div class="col-6 float-left">
-                                        <h4>{{post.location}}</h4>
-                                    </div>
-                                </div>
-                                <div class="custom-img-container">
-                                    <img class="card-img custom-img"
-                                         src="{{ post.picture.url }}"
-                                         alt="{{ post.location }}">
-                                </div>
-                                <div class="card-body px-3">
-                                    <div class="d-flex justify-content-between">
-                                        <h5 class="card-title">{{ post.user }}</h5>
-                                        <h5 class="card-title">{{ post.likes }} Likes</h5>
-                                        <a href="#" class="like-button" data-post-id="{{ post.id }}">
-                                            {% if user in post.like_set.all %}
-                                                Unlike
-                                            {% else %}
-                                                Like
-                                            {% endif %}
-                                        </a>
-                                    </div>
-                                    <p class="card-text">{{ post.caption }}</p>
-                                </div>
-                                <div class="row post-footer px-3 pb-3">
-                                    <div class="col-1 float-left text-left">
-                                        <i class="far fa-heart"></i>
-                                    </div>
-                                    <div class="col-1 float-right text-right">
-                                        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endfor %}
-                        <!-- </div> -->
-                    </div>
+                <div class="custom-img-container">
+                    <img class="card-img custom-img" src="{{ item.post.picture.url }}" alt="{{ post.location }}">
                 </div>
+                <div class="card-body px-3">
+                    <div class="d-flex justify-content-between align-items">
+                        <h5 class="card-title" style="font-weight: 600;">@{{ item.post.user }}</h5>
+                        <div class="d-flex">
+                            <h5 class="card-title mr-1" id="like-count-{{ item.post.id }}">{{ item.post.likes }}</h5>
+                            {% if item.liked %}
+                            <i class="fa-heart fas like-icon" id="like-icon-{{ item.post.id }}" data-post-id="{{ item.post.id }}"></i>
+                            {% else %}
+                            <i class="fa-heart far like-icon" id="like-icon-{{ item.post.id }}" data-post-id="{{ item.post.id }}"></i>
+                            {% endif %}
 
-                <!-- Third column -->
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-row post-header col-12 py-2 px-3Ō">
-                            <h5>People</h5>
-                        </div>
-                        <div class="card-body">
-                            <div class="media mb-3">
-                                <img src="path/to/profile-picture.jpg" class="mr-3 rounded-circle" alt="Profile Picture"
-                                     style="width: 50px; height: 50px;">
-                                <div class="media-body">
-                                    <h6 class="mt-0">Username</h6>
-                                    Location
-                                </div>
-                            </div>
-                            <div class="media mb-3">
-                                <img src="path/to/profile-picture.jpg" class="mr-3 rounded-circle" alt="Profile Picture"
-                                     style="width: 50px; height: 50px;">
-                                <div class="media-body">
-                                    <h6 class="mt-0">Username</h6>
-                                    Location
-                                </div>
-                            </div>
-                            <!-- Add more users as needed -->
                         </div>
                     </div>
+                    <p class="card-text">{{ item.post.caption }}</p>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- </div> -->
+        </div>
 
+
+        <!-- Third column -->
+        <div class="col-md-3">
+            <div class="card people-card">
+                <div class="card-header py-2 px-3">
+                    <h4>People</h4>
+                </div>
+                <div class="card-body">
+                    {% if following_list %}
+                    {% for profile in following_list %}
+                    <a href="{% url 'home:user_dashboard' user_id=profile.user.id %}" class="card-title"
+                        style="font-weight: 600; color:black">
+                        <div class="media mb-3">
+
+                            <img src="{{ profile.profile_picture.url }}" class="mr-3 rounded-circle"
+                                alt="Profile Picture" style="width: 50px; height: 50px;">
+                            <div class="media-body">
+                                <h5 class="mt-0">@{{profile.user.username}}</h5>
+                                {{profile.location}}
+                            </div>
+                        </div>
+                    </a>
+                    {% endfor %}
+                    {% endif %}
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.like-button').forEach(function(button) {
-                button.addEventListener('click', function(event) {
-                    event.preventDefault();
-                    var postId = this.getAttribute('data-post-id');
-                    var likeButton = this;
-                    var likesCount = likeButton.previousElementSibling.querySelector('.likes-count');
-    
-                    fetch(`/like/${postId}/`, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRFToken': '{{ csrf_token }}'
-                        }
-                    })
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".like-icon").forEach(function (icon) {
+            icon.addEventListener("click", function () {
+                const postId = this.getAttribute("data-post-id");
+                const likeCountElement = document.getElementById(`like-count-${postId}`);
+                const iconElement = this; // Current clicked icon
+
+                fetch(`/like/${postId}/`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRFToken": "{{ csrf_token }}"
+                    },
+                    credentials: "same-origin"
+                })
                     .then(response => response.json())
                     .then(data => {
-                        likesCount.textContent = data.likes;
-                        if (likeButton.textContent.trim() === 'Like') {
-                            likeButton.textContent = 'Unlike';
+                        // Update like count
+                        likeCountElement.textContent = data.likes;
+
+                        // Toggle icon classes
+                        if (iconElement.classList.contains("far")) {
+                            iconElement.classList.remove("far");
+                            iconElement.classList.add("fas");
                         } else {
-                            likeButton.textContent = 'Like';
+                            iconElement.classList.remove("fas");
+                            iconElement.classList.add("far");
                         }
                     })
                     .catch(error => console.error('Error:', error));
-                });
             });
         });
-    </script>
+    });
+</script>
+
+
 
 {% endblock %}

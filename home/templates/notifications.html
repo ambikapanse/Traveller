@@ -1,75 +1,143 @@
 {% extends 'base.html' %}
 {% block start %}
-    <!-- Tab panes -->
-    <div class="container mt-4">
-        <div class="container-fluid custom-padding">
-            <div class="row justify-content-center">
-                <!-- First column -->
-                <div class="col-md-3">
-                    <div class="tab-content">
-                        <div id="tab1" class="container-fluid tab-pane active">
-                            <div class="card custom-card">
-                                <div class="row post-header col-12 py-2 px-3">
-                                    <div class="col-6 float-left">
-                                        <h4>Daily Stats</h4>
-                                    </div>
-                                </div>
-                                <div class="custom-img-container">
-                                    <img class="card-img custom-img" src="https://via.placeholder.com/300x300"
-                                         alt="Time Spent"></div>
-                                <div class="card-body px-3">
-                                    <h5 class="card-title">Time Spent</h5>
-                                </div>
-                            </div>
-                        </div>
+
+<head>
+    <style>
+        .fa{
+            padding-right: 5px;
+        }
+        .show{
+            padding-bottom: 0px;
+        }
+        .side-menu__user-profile {
+            display: flex;
+            /* Enable flexbox layout */
+            align-items: center;
+            /* Align items vertically in the center */
+        }
+
+        .side-menu__user-avatar {
+            padding: 0px;
+            margin-right: 10px;
+            /* Space between the image and user info */
+        }
+
+        .side-menu__user-idnfo {
+            flex: 1;
+            margin-left: 10px;
+            /* Take up remaining space */
+        }
+
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            /* Stack children vertically */
+            align-items: center;
+            /* Center align children horizontally */
+            text-align: center;
+            /* Center align text inside */
+            justify-items: center;
+        }
+
+        .profile-container img {
+            border-radius: 50%;
+            /* Make the image round */
+            margin-bottom: 5px;
+            /* Space between image and username */
+        }
+
+        .profile-container .username {
+            font-size: 15px;
+            /* Adjust font size as needed */
+            color: azure;
+            /* Text color */
+        }
+
+
+        /* Optional: Adjust margins and paddings as needed */
+    </style>
+</head>
+<!-- Tab panes -->
+<div class="container mt-4">
+    <div class="container-fluid custom-padding">
+        <div class="row justify-content-center">
+            <!-- First column -->
+            <div class="col-md-3">
+                <!-- What's New -->
+                <div class="card custom-card">
+                    <div class="card-row post-header col-12 py-2 px-3Ō">
+                        <h5>What's New</h5>
                     </div>
-                </div>
-
-
-                <!-- Second column -->
-                <div class="col-md-6">
-                    <div class="tab-content">
-                        <div id="tab2" class="container-fluid tab-pane active">
-                            {#                        {% for post in post_items %}#}
-                            <div class="card custom-card">
-                                No notifications
-                            </div>
-                            {#                        {% endfor %}#}
+                    <a href="{{ article.link }}">
+                        <div class="custom-img-container">
+                            <img class="card-img custom-side-img" src="{{ article.img_url }}"
+                                placeholder="https://via.placeholder.com/300x300" alt="New Article">
                         </div>
-                    </div>
-                </div>
-
-                <!-- Third column -->
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-row post-header col-12 py-2 px-3Ō">
-                            <h5>People</h5>
+                        <div class="card-body px-3">
+                            <h5 class="article-title">{{ article.title }}</h5>
                         </div>
-                        <div class="card-body">
-                            <div class="media mb-3">
-                                <img src="path/to/profile-picture.jpg" class="mr-3 rounded-circle" alt="Profile Picture"
-                                     style="width: 50px; height: 50px;">
-                                <div class="media-body">
-                                    <h6 class="mt-0">Username</h6>
-                                    Location
-                                </div>
-                            </div>
-                            <div class="media mb-3">
-                                <img src="path/to/profile-picture.jpg" class="mr-3 rounded-circle" alt="Profile Picture"
-                                     style="width: 50px; height: 50px;">
-                                <div class="media-body">
-                                    <h6 class="mt-0">Username</h6>
-                                    Location
-                                </div>
-                            </div>
-                            <!-- Add more users as needed -->
-                        </div>
-                    </div>
-
+                    </a>
                 </div>
             </div>
+
+
+            <!-- Second column -->
+            <div class="col-md-6">
+                <div class="tab-content">
+                    {% for notification in notifications %}
+                    {% if notification.sender.username != request.user.username %}
+                    <div class="alert alert-white alert-dismissible fade show" role="alert"
+                        style="border: 1px azure solid; border-radius: 25px;">
+                        <div class="side-menu__user-profile">
+                            <a href="{% url 'home:user_dashboard' notification.sender.id %}"
+                                class="side-menu__user-avatar">
+                                <div class="profile-container">
+                                {% if notification.sender.profile.profile_picture %}
+                                <img src="{{ notification.sender.profile.profile_picture.url }}" alt="Profile Picture"
+                                    class="rounded-circle" style="width: 50px; height: 50px;">
+                                {% endif %}
+                                <div class="username">@{{ notification.sender.profile.user.username }}</div>
+                            </a>
+                        </div>
+                        <div class="side-menu__user-idnfo" style="text-align: start;">
+                            <br>
+                            {% if notification.notification_types == 1 %}
+                            <a href="{% url 'home:user_dashboard' notification.sender.id %}"
+                                style="font-size: 15px; color: azure;"><b><i class="fa fa-heart"
+                                        style="color: azure;"></i> Liked your Picture</b>
+                            </a>
+                            {% elif notification.notification_types == 3 %}
+                            <a href="{% url 'home:user_dashboard' notification.sender.id %}"
+                                style="font-size: 15px; color: azure;"><b><i class="fa fa-user-plus"
+                                        style="color: azure;"></i>{{notification.sender.user.username}} followed
+                                    you</b></a>
+                            {% endif %}
+                            <br>
+                            <p style="font-size: 10px; color: rgb(150, 147, 147);">{{ notification.date }}</p>
+                        </div>
+                        {% if notification.notification_types in "123" %}
+                        <a href="{% url 'home:user_dashboard' notification.sender.id %}" class="side-menu__user-avatar"
+                            style="margin-left: 20px;">
+                            <img src="{{ notification.post.picture.url }}" alt="User Picture">
+                        </a>
+
+                        {% endif %}
+                    </div>
+                    <a href="{% url 'home:delete-notification' notification.id %}" type="button" class="btn-close"
+                        data-bs-dismiss="alert" aria-label="Close"></a>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+
+        <!-- Third column -->
+        <div class="col-md-3">
         </div>
     </div>
+</div>
+</div>
 
 
 {% endblock %}

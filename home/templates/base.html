@@ -9,14 +9,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Traveller</title>
     <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg">
         <a class="navbar-brand" href="/home/" style="font-size: 28px; font-weight: 500; font-family: 'Quicksand', sans-serif;">Traveller</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,24 +38,21 @@
                 </form>
             </div>
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="/livestreams/">L</a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/maps/"><i class="fa fa-map"></i></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/maps/">M</a>
+                    <a class="nav-link" href="/chats/"><i class="fa fa-comment"></i></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/chats/">M</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/notifications/">N</a>
+                    <a class="nav-link" href="/notifications/"><i class="fa fa-bell"></i></a>
                 </li>
                 {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link-pfp" href="/dashboard/"><img class="user-pfp" ,
-                            src="{% if profile_picture_url %}{{ profile_picture.url }}{% else %}https://picsum.photos/50/50{% endif %}"
-                            , alt="Profile Picture">
-                    </a>
+                    <a class="nav-link-pfp" href="/dashboard/"><img class="user-pfp" src="{% if profile_picture_url %}{{ profile_picture_url }}{% else %}https://picsum.photos/50/50{% endif %}" alt="Profile Picture"></a>
                 </li>
                 {% endif %}
             </ul>

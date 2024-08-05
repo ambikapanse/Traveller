@@ -3,61 +3,119 @@
 
 {% block start %}
 
-<div class="columns is-mobile has-text-centered">
-    <div class="column is-half is-offset-one-quarter">
+<head>
+    <style>
+        .has-background-dark {
+            background-color: #050A30;
+            color: azure;
+        }
 
+        .has-text-azure {
+            color: azure;
+        }
+
+        .card-content {
+            padding: 2rem;
+            border: 2px solid azure;
+        }
+
+        .field input,
+        .field textarea {
+            border: 1px solid azure;
+            border-radius: 4px;
+            padding: 0.5rem;
+            width: 100%;
+            background-color: #050A30;
+            color: azure;
+        }
+
+        .field .checkbox {
+            display: flex;
+            align-items: center;
+            color: azure;
+        }
+
+        .field .checkbox input[type="checkbox"] {
+            margin-right: 0.5rem;
+        }
+
+        .control {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0.5rem;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .button-card {
+            display: inline-flex;
+            align-items: center;
+            color: white;
+            background-color: #050A30;
+            border: 1px solid #ddd;
+            padding: 0.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .button-card:hover {
+            color: #050A30;
+            background-color: azure;
+        }
+
+        .button-card:focus {
+            outline: none;
+        }
+    </style>
+</head>
+<div class="columns is-mobile is-centered">
+    <div class="column is-half">
         <div class="card">
-            <div class="card-content">
+            <div class="card-content has-background-dark">
+                <h3 class="title is-3" style="color: #FFBD59;">New Post</h3>
 
                 <form method="post" action="" enctype="multipart/form-data" role="form">
                     {% csrf_token %}
-                    <h3 class="title is-1">New Post</h3>
 
                     <div class="field">
-                        <p class="control has-icons-left">
-                            <label class="label is-medium">Choose your files</label>
+                        <label class="label has-text-azure">Choose your files</label>
+                        <div class="control">
                             {{ form.picture }}
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-lock"></i>
-                            </span>
-                        </p>
+                        </div>
                     </div>
 
                     <div class="field">
-                        <p class="control has-icons-left">
-                            <label class="label is-medium">Caption</label>
+                        <label class="label has-text-azure">Caption</label>
+                        <div class="control">
                             {{ form.caption }}
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-lock"></i>
-                            </span>
-                        </p>
+                        </div>
                     </div>
 
                     <div class="field">
-                        <p class="control has-icons-left">
-                            <label class="label is-medium">Location</label>
+                        <label class="label has-text-azure">Location</label>
+                        <div class="control">
                             {{ form.location }}
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-lock"></i>
-                            </span>
-                        </p>
+                        </div>
                     </div>
 
-
-                    </p>
+                    <div class="button-container">
+                        <div class="control">
+                            <button type="submit" name="action" class="button-card">
+                                Create
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
-
-            <div class="field">
-                <p class="control">
-                    <button type="submit" name="action" class="button is-success">
-                        Create
-                    </button>
-                </p>
-            </div>
-
-
         </div>
     </div>
+</div>
 
-
-    {% endblock %}
+{% endblock %}

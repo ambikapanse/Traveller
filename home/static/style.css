@@ -12,11 +12,13 @@ input,
 button {
     font-size: 1rem;
     font-family: "Poppins", sans-serif;
-    color: #050A30; /* Set body text color */
+    color: #070707;
+    /* Set body text color */
 }
 
 body {
-    background-color: #050A30; /* Set body background color */
+    background-color: #050A30;
+    /* Set body background color */
 }
 
 input,
@@ -36,15 +38,19 @@ header,
 .navbar-brand,
 .navbar-toggler,
 .navbar-collapse {
-  background-color: #2B315B !important; /* Apply background color to navbar */
-  font-family: 'Quicksand', sans-serif !important; /* Apply Quicksand font to navbar */
-  color: #FFBD59 !important; /* Apply text color to navbar */
+    background-color: #2B315B !important;
+    /* Apply background color to navbar */
+    font-family: 'Quicksand', sans-serif !important;
+    /* Apply Quicksand font to navbar */
+    color: #FFBD59 !important;
+    /* Apply text color to navbar */
 }
 
 .navbar-nav .nav-link,
 .navbar-brand,
 .navbar-toggler-icon {
-  color: #FFBD59 !important; /* Apply text color to navbar links and brand */
+    color: #FFBD59 !important;
+    /* Apply text color to navbar links and brand */
 }
 
 /* static/styles.css */
@@ -61,11 +67,13 @@ input,
 button {
     font-size: 1rem;
     font-family: "Poppins", sans-serif;
-    color: #050A30; /* Set body text color */
+    color: #060505;
+    /* Set body text color */
 }
 
 body {
-    background-color: #050A30; /* Set body background color */
+    background-color: #050A30;
+    /* Set body background color */
 }
 
 input,
@@ -85,15 +93,23 @@ header,
 .navbar-brand,
 .navbar-toggler,
 .navbar-collapse {
-  background-color: #2B315B !important; /* Apply background color to navbar */
-  font-family: 'Quicksand', sans-serif !important; /* Apply Quicksand font to navbar */
-  color: #FFBD59 !important; /* Apply text color to navbar */
+    background-color: #2B315B !important;
+    /* Apply background color to navbar */
+    font-family: 'Quicksand', sans-serif !important;
+    /* Apply Quicksand font to navbar */
+    color: #FFBD59 !important;
+    /* Apply text color to navbar */
 }
 
 .navbar-nav .nav-link,
 .navbar-brand,
 .navbar-toggler-icon {
-  color: #FFBD59 !important; /* Apply text color to navbar links and brand */
+    background-color: #2B315B !important;
+    /* Apply background color to navbar */
+    font-family: 'Quicksand', sans-serif !important;
+    /* Apply Quicksand font to navbar */
+    color: #FFBD59 !important;
+    /* Apply text color to navbar links and brand */
 }
 
 .navbar-nav {
@@ -109,8 +125,8 @@ header,
     margin-left: 10px;
 }
 
-.nav-link-pfp{
-    margin:0;
+.nav-link-pfp {
+    margin: 0;
 }
 
 .search-bar-container {
@@ -128,51 +144,66 @@ header,
     }
 }
 
+.article-title {
+    color: black
+}
+
 /*POSTS*/
 
-.custom-img-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* Center align items horizontally */
+.custom-card {
+    margin-bottom: 20px;
+    justify-content: center;
+    width: 100%;
+}
 
+.custom-img-container {
+    width: 100%;
+    height: 300px;
+    /* Fixed height for the container */
+    position: relative;
+    overflow: hidden;
+    /* Hide overflow to crop the image if needed */
 }
 
 .custom-img {
-    width: 96%;
-    height: 96%;
-    object-fit: cover;
-    /* Ensures the image covers the entire area */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: contain;
+    /* Adjust the image to fit within the container */
 }
+
+.custom-side-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+}
+
 
 .post-header h4 {
     font-size: 1.2rem;
     margin: 0;
 }
-.post-header h4 {
-    font-size: 1.2rem;
-    margin: 0;
-}
+
 
 .card-body {
     padding: 10px 10px;
 }
-.card-body {
-    padding: 10px 10px;
-}
+
+
 
 .card-title {
     font-size: 1rem;
     margin-bottom: 10px;
 }
-.card-title {
-    font-size: 1rem;
-    margin-bottom: 10px;
-}
 
-.card-text {
-    font-size: 0.9rem;
-}
+
 .card-text {
     font-size: 0.9rem;
 }
@@ -181,40 +212,39 @@ header,
     font-size: 1.2rem;
     cursor: pointer;
 }
-.post-footer i {
-    font-size: 1.2rem;
-    cursor: pointer;
-}
+
 
 .post-footer .fa-ellipsis-v {
     float: right;
 }
 
-.post-footer .fa-ellipsis-v {
-    float: right;
-}
+
 
 /* DASHBOARD */
 
-.user-pfp{
+.user-pfp {
     width: 40px;
     height: 40px;
     border-radius: 50%;
     overflow: hidden;
 }
+
+
 .profile-card {
     width: 60%;
     margin: 50px 20px;
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(243, 241, 241, 0.1);
 }
 
 .profile-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin:0px;
+    padding:0px;
 }
 
 .profile-picture {
@@ -232,37 +262,26 @@ header,
 
 .profile-info {
     flex: 1;
-    margin-left: 20px;
+    margin-left: 50px;
     color: #ffffff;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    align-content: baseline;
 }
-
 
 .profile-stats {
     display: flex;
     justify-content: space-around;
-    margin-top: 10px;
-}
-
-.profile-stats div {
     text-align: center;
+    font-weight: 600;
+    font-size: larger;
 }
 
 .profile-bio {
-    margin-top: 10px;
+    margin-top: 50px;
 }
 
-.follow-button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    margin-top: 20px;
-    background-color: #3897f0;
-    color: #fff;
-    text-align: center;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
 
 .gallery {
     display: flex;
@@ -276,6 +295,24 @@ header,
     border-radius: 5px;
 }
 
+
+/* Style for the like icon */
+.like-icon {
+    cursor: pointer;
+    /* Change cursor to pointer */
+    font-size: 1.5rem;
+    /* Adjust the size as needed */
+    transition: color 0.3s;
+    /* Smooth transition for color change */
+}
+
+
+/* Color when the heart icon is liked */
+.like-icon.fas {
+    color: red;
+    /* Color when liked */
+}
+
 /* MAPS */
 #mapid {
     height: 100vh;
@@ -286,13 +323,16 @@ header,
 /* Login card styles */
 .body.login-page {
     background: url('/static/images/loginlogo1.png') center top/cover fixed no-repeat;
-    height: 100vh; /* Adjusted viewport height */
+    height: 100vh;
+    /* Adjusted viewport height */
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-size: 100%; /* Increase background size slightly */
-    background-position: center left; /* Move background slightly to the left */
+    background-size: 100%;
+    /* Increase background size slightly */
+    background-position: center left;
+    /* Move background slightly to the left */
 }
 
 /* Login card styles */
@@ -314,17 +354,27 @@ header,
     padding-left: 80px;
     margin-left: 255px;
     margin-bottom: 30px;
-    transition: transform 0.3s ease; /* Added transition for smooth hover effect */
+    transition: transform 0.3s ease;
+    /* Added transition for smooth hover effect */
 }
 
 .login-card:hover {
-    transform: scale(1.05); /* Scale up slightly on hover */
+    transform: scale(1.05);
+    /* Scale up slightly on hover */
 }
 
 @keyframes breatheOnce {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
 
 
@@ -346,9 +396,12 @@ header,
 }
 
 .login-card .form-control {
-    height: 35px; /* Adjusted height of form controls */
-    font-size: 1.2rem; /* Increased font size */
-    width: 350px; /* Full width input fields */
+    height: 35px;
+    /* Adjusted height of form controls */
+    font-size: 1.2rem;
+    /* Increased font size */
+    width: 350px;
+    /* Full width input fields */
     background-color: #050A30;
     color: #FFBD59;
 }
@@ -372,9 +425,12 @@ header,
     padding: 12px;
     cursor: pointer;
     display: block;
-    width: 100%; /* Make the button take full width */
-    max-width: 200px; /* Set a max width for the button */
-    margin: 0 auto; /* Center the button horizontally */
+    width: 100%;
+    /* Make the button take full width */
+    max-width: 200px;
+    /* Set a max width for the button */
+    margin: 0 auto;
+    /* Center the button horizontally */
 }
 
 .login-card p {
@@ -383,26 +439,35 @@ header,
 }
 
 .register-link {
-    color: #FFF2DE; /* Set text color to white */
-    font-size: 1.1rem; /* Increase font size as needed */
-    text-decoration: none; /* Remove underline from link */
-    transition: color 0.3s ease; /* Smooth color transition on hover */
+    color: #FFF2DE;
+    /* Set text color to white */
+    font-size: 1.1rem;
+    /* Increase font size as needed */
+    text-decoration: none;
+    /* Remove underline from link */
+    transition: color 0.3s ease;
+    /* Smooth color transition on hover */
 }
 
 .register-link:hover {
-    color: #FFBD59; /* Change text color on hover */
+    color: #FFBD59;
+    /* Change text color on hover */
 }
 
 /* Register page styles */
 .body.register-page {
     background: url('/static/images/registerlogo1.png') center top/cover fixed no-repeat;
-    height: 100vh; /* Adjusted viewport height */
+    height: 100vh;
+    /* Adjusted viewport height */
     margin: 0;
     display: flex;
-    justify-content: flex-end; /* Align content to the right */
+    justify-content: flex-end;
+    /* Align content to the right */
     align-items: center;
-    background-size: cover; /* Adjust background size */
-    background-position: center left; /* Move background slightly to the left */
+    background-size: cover;
+    /* Adjust background size */
+    background-position: center left;
+    /* Move background slightly to the left */
 }
 
 .register-card {
@@ -446,19 +511,25 @@ header,
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Align labels and inputs to the start */
+    align-items: flex-start;
+    /* Align labels and inputs to the start */
     margin-bottom: 15px;
 }
 
 .register-card .form-group label {
-    margin-bottom: 5px; /* Add space between label and input */
-    width: 100%; /* Ensure the label takes the full width */
+    margin-bottom: 5px;
+    /* Add space between label and input */
+    width: 100%;
+    /* Ensure the label takes the full width */
 }
 
 .register-card .form-control {
-    height: 35px; /* Adjusted height of form controls */
-    font-size: 1.2rem; /* Increased font size */
-    width: 325px; /* Full width input fields */
+    height: 35px;
+    /* Adjusted height of form controls */
+    font-size: 1.2rem;
+    /* Increased font size */
+    width: 325px;
+    /* Full width input fields */
     background-color: #050A30;
     color: #FFBD59;
 }
@@ -476,21 +547,30 @@ header,
     padding: 12px;
     cursor: pointer;
     display: block;
-    width: 100%; /* Make the button take full width */
-    max-width: 200px; /* Set a max width for the button */
-    margin: 0 auto; /* Center the button horizontally */
+    width: 100%;
+    /* Make the button take full width */
+    max-width: 200px;
+    /* Set a max width for the button */
+    margin: 0 auto;
+    /* Center the button horizontally */
 }
 
 .login-link {
-    color: #FFF2DE; /* Set text color to white */
-    font-size: 1.1rem; /* Increase font size as needed */
-    text-decoration: none; /* Remove underline from link */
-    transition: color 0.3s ease; /* Smooth color transition on hover */
+    color: #FFF2DE;
+    /* Set text color to white */
+    font-size: 1.1rem;
+    /* Increase font size as needed */
+    text-decoration: none;
+    /* Remove underline from link */
+    transition: color 0.3s ease;
+    /* Smooth color transition on hover */
 }
 
 .login-link:hover {
-    color: #FFBD59; /* Change text color on hover */
+    color: #FFBD59;
+    /* Change text color on hover */
 }
+
 .login-card p {
     text-align: center;
     margin-top: 15px;
@@ -498,26 +578,35 @@ header,
 
 
 .register-link {
-    color: #FFF2DE; /* Set text color to white */
-    font-size: 1.1rem; /* Increase font size as needed */
-    text-decoration: none; /* Remove underline from link */
-    transition: color 0.3s ease; /* Smooth color transition on hover */
+    color: #FFF2DE;
+    /* Set text color to white */
+    font-size: 1.1rem;
+    /* Increase font size as needed */
+    text-decoration: none;
+    /* Remove underline from link */
+    transition: color 0.3s ease;
+    /* Smooth color transition on hover */
 }
 
 .register-link:hover {
-    color: #FFBD59; /* Change text color on hover */
+    color: #FFBD59;
+    /* Change text color on hover */
 }
 
 /* Register page styles */
 .body.register-page {
     background: url('/static/images/registerlogo1.png') center top/cover fixed no-repeat;
-    height: 100vh; /* Adjusted viewport height */
+    height: 100vh;
+    /* Adjusted viewport height */
     margin: 0;
     display: flex;
-    justify-content: flex-end; /* Align content to the right */
+    justify-content: flex-end;
+    /* Align content to the right */
     align-items: center;
-    background-size: cover; /* Adjust background size */
-    background-position: center left; /* Move background slightly to the left */
+    background-size: cover;
+    /* Adjust background size */
+    background-position: center left;
+    /* Move background slightly to the left */
 }
 
 .register-card {
@@ -561,19 +650,25 @@ header,
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Align labels and inputs to the start */
+    align-items: flex-start;
+    /* Align labels and inputs to the start */
     margin-bottom: 15px;
 }
 
 .register-card .form-group label {
-    margin-bottom: 5px; /* Add space between label and input */
-    width: 100%; /* Ensure the label takes the full width */
+    margin-bottom: 5px;
+    /* Add space between label and input */
+    width: 100%;
+    /* Ensure the label takes the full width */
 }
 
 .register-card .form-control {
-    height: 35px; /* Adjusted height of form controls */
-    font-size: 1.2rem; /* Increased font size */
-    width: 325px; /* Full width input fields */
+    height: 35px;
+    /* Adjusted height of form controls */
+    font-size: 1.2rem;
+    /* Increased font size */
+    width: 325px;
+    /* Full width input fields */
     background-color: #050A30;
     color: #FFBD59;
 }
@@ -591,18 +686,26 @@ header,
     padding: 12px;
     cursor: pointer;
     display: block;
-    width: 100%; /* Make the button take full width */
-    max-width: 200px; /* Set a max width for the button */
-    margin: 0 auto; /* Center the button horizontally */
+    width: 100%;
+    /* Make the button take full width */
+    max-width: 200px;
+    /* Set a max width for the button */
+    margin: 0 auto;
+    /* Center the button horizontally */
 }
 
 .login-link {
-    color: #FFF2DE; /* Set text color to white */
-    font-size: 1.1rem; /* Increase font size as needed */
-    text-decoration: none; /* Remove underline from link */
-    transition: color 0.3s ease; /* Smooth color transition on hover */
+    color: #FFF2DE;
+    /* Set text color to white */
+    font-size: 1.1rem;
+    /* Increase font size as needed */
+    text-decoration: none;
+    /* Remove underline from link */
+    transition: color 0.3s ease;
+    /* Smooth color transition on hover */
 }
 
 .login-link:hover {
-    color: #FFBD59; /* Change text color on hover */
+    color: #FFBD59;
+    /* Change text color on hover */
 }

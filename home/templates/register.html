@@ -1,10 +1,20 @@
-{% extends 'base.html' %}
 {% load static %}
-{% block head %}
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block start %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traveller</title>
+    <!-- Bootstrap CSS -->
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
 <div class="body register-page">
     <div class="register-card">
         <div class="card-body">
@@ -37,4 +47,5 @@
 </div>
 
 
-{% endblock %}
+</body>
+</html>

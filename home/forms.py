@@ -21,6 +21,7 @@ class UserRegistrationForm(UserCreationForm):
             raise forms.ValidationError("This email address is already in use. Please use a different email address.")
         return email
 
+
 class ProfileForm(forms.ModelForm):
     profile_picture = forms.ImageField(required=False)
     bio = forms.CharField(widget=forms.Textarea)
@@ -29,6 +30,7 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['profile_picture', 'bio', 'location']
+
 
 
 class PostForm(forms.ModelForm):
